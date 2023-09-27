@@ -1,13 +1,13 @@
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
-require("dotenv").config();
 const {
   UpdateCommand,
   DynamoDBDocumentClient,
 } = require("@aws-sdk/lib-dynamodb");
-const dynamoDB = new DynamoDBClient({
-  region: "sa-east-1",
-});
+require("dotenv").config();
 function main(args) {
+  const dynamoDB = new DynamoDBClient({
+    region: "sa-east-1",
+  });
   const { post = "", secret = "" } = args;
   if (post && process.env.SECRET === secret) {
     const docClient = DynamoDBDocumentClient.from(dynamoDB);

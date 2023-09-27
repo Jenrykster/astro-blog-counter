@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Hello world: NodeJs",
   "main": "hello.js",
-  "scripts": {
-    "test": "jest --coverage --runInBand --forceExit --verbose false"
-  },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.420.0",
     "@aws-sdk/lib-dynamodb": "^3.420.0",
