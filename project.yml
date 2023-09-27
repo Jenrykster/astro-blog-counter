@@ -1,5 +1,5 @@
 packages:
-  - name: blog-functions
+  - name: blog
     actions:
       - name: view-counter
         runtime: 'nodejs:default'
