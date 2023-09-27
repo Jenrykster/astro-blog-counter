@@ -7,7 +7,7 @@ const {
 const dynamoDB = new DynamoDBClient({
   region: "sa-east-1",
 });
-async function main(args) {
+function main(args) {
   const { post = "", secret = "" } = args;
   if (post && process.env.SECRET === secret) {
     const docClient = DynamoDBDocumentClient.from(dynamoDB);
@@ -23,13 +23,16 @@ async function main(args) {
         ":increment": 1,
       },
     };
-    try {
-      const results = await docClient.send(new UpdateCommand(params));
-      return { results };
-    } catch (err) {
-      console.error(err);
-      return { err };
-    }
+    return docClient
+      .send(new UpdateCommand(params))
+      .then((res) => {
+        console.log({ res });
+        return { res };
+      })
+      .catch((err) => {
+        console.log({ err });
+        return { err };
+      });
   }
 }
 
